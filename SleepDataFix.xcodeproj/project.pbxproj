@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F34465F41C8B647C00D67F2F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F34465F31C8B647C00D67F2F /* Default-568h@2x.png */; };
+		F34465F61C8B701E00D67F2F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F34465F51C8B701E00D67F2F /* Default-568h@2x.png */; };
 		F35AE5221C8A4C85005BB5A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */; };
 		F35AE5251C8A4F26005BB5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35AE5241C8A4F26005BB5A9 /* Main.storyboard */; };
 		F3C5D2C51C8A4B5D00562E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */; };
@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F34465F31C8B647C00D67F2F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		F34465F51C8B701E00D67F2F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		F35AE5231C8A4C85005BB5A9 /* SleepDataFix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SleepDataFix.entitlements; sourceTree = "<group>"; };
 		F35AE5241C8A4F26005BB5A9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -58,12 +58,12 @@
 		F3C5D2C31C8A4B5D00562E85 /* SleepDataFix */ = {
 			isa = PBXGroup;
 			children = (
+				F34465F51C8B701E00D67F2F /* Default-568h@2x.png */,
 				F35AE5231C8A4C85005BB5A9 /* SleepDataFix.entitlements */,
 				F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */,
 				F3C5D2C61C8A4B5D00562E85 /* MainViewController.swift */,
 				F3C5D2D01C8A4B5D00562E85 /* Info.plist */,
 				F35AE5241C8A4F26005BB5A9 /* Main.storyboard */,
-				F34465F31C8B647C00D67F2F /* Default-568h@2x.png */,
 			);
 			path = SleepDataFix;
 			sourceTree = "<group>";
@@ -129,7 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F35AE5251C8A4F26005BB5A9 /* Main.storyboard in Resources */,
-				F34465F41C8B647C00D67F2F /* Default-568h@2x.png in Resources */,
+				F34465F61C8B701E00D67F2F /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
