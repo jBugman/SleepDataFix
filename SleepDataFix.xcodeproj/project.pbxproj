@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F34465F61C8B701E00D67F2F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F34465F51C8B701E00D67F2F /* Default-568h@2x.png */; };
+		F34465F81C8B99BB00D67F2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34465F71C8B99BB00D67F2F /* Images.xcassets */; };
 		F35AE5221C8A4C85005BB5A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */; };
 		F35AE5251C8A4F26005BB5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35AE5241C8A4F26005BB5A9 /* Main.storyboard */; };
 		F3C5D2C51C8A4B5D00562E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */; };
@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F34465F51C8B701E00D67F2F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F34465F71C8B99BB00D67F2F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		F35AE5231C8A4C85005BB5A9 /* SleepDataFix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SleepDataFix.entitlements; sourceTree = "<group>"; };
 		F35AE5241C8A4F26005BB5A9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -58,12 +58,12 @@
 		F3C5D2C31C8A4B5D00562E85 /* SleepDataFix */ = {
 			isa = PBXGroup;
 			children = (
-				F34465F51C8B701E00D67F2F /* Default-568h@2x.png */,
 				F35AE5231C8A4C85005BB5A9 /* SleepDataFix.entitlements */,
 				F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */,
 				F3C5D2C61C8A4B5D00562E85 /* MainViewController.swift */,
 				F3C5D2D01C8A4B5D00562E85 /* Info.plist */,
 				F35AE5241C8A4F26005BB5A9 /* Main.storyboard */,
+				F34465F71C8B99BB00D67F2F /* Images.xcassets */,
 			);
 			path = SleepDataFix;
 			sourceTree = "<group>";
@@ -128,8 +128,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F34465F81C8B99BB00D67F2F /* Images.xcassets in Resources */,
 				F35AE5251C8A4F26005BB5A9 /* Main.storyboard in Resources */,
-				F34465F61C8B701E00D67F2F /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +232,8 @@
 		F3C5D2D41C8A4B5D00562E85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SleepDataFix/SleepDataFix.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -247,6 +249,8 @@
 		F3C5D2D51C8A4B5D00562E85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SleepDataFix/SleepDataFix.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
