@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F34465F41C8B647C00D67F2F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F34465F31C8B647C00D67F2F /* Default-568h@2x.png */; };
+		F35AE5221C8A4C85005BB5A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */; };
+		F35AE5251C8A4F26005BB5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35AE5241C8A4F26005BB5A9 /* Main.storyboard */; };
+		F3C5D2C51C8A4B5D00562E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */; };
+		F3C5D2C71C8A4B5D00562E85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5D2C61C8A4B5D00562E85 /* MainViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F34465F31C8B647C00D67F2F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		F35AE5231C8A4C85005BB5A9 /* SleepDataFix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SleepDataFix.entitlements; sourceTree = "<group>"; };
+		F35AE5241C8A4F26005BB5A9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F3C5D2C11C8A4B5D00562E85 /* SleepDataFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepDataFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F3C5D2C61C8A4B5D00562E85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F3C5D2D01C8A4B5D00562E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3C5D2BE1C8A4B5D00562E85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F35AE5221C8A4C85005BB5A9 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F3C5D2B81C8A4B5D00562E85 = {
+			isa = PBXGroup;
+			children = (
+				F35AE5211C8A4C85005BB5A9 /* HealthKit.framework */,
+				F3C5D2C31C8A4B5D00562E85 /* SleepDataFix */,
+				F3C5D2C21C8A4B5D00562E85 /* Products */,
+			);
+			sourceTree = "<group>";
+			wrapsLines = 0;
+		};
+		F3C5D2C21C8A4B5D00562E85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3C5D2C11C8A4B5D00562E85 /* SleepDataFix.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3C5D2C31C8A4B5D00562E85 /* SleepDataFix */ = {
+			isa = PBXGroup;
+			children = (
+				F35AE5231C8A4C85005BB5A9 /* SleepDataFix.entitlements */,
+				F3C5D2C41C8A4B5D00562E85 /* AppDelegate.swift */,
+				F3C5D2C61C8A4B5D00562E85 /* MainViewController.swift */,
+				F3C5D2D01C8A4B5D00562E85 /* Info.plist */,
+				F35AE5241C8A4F26005BB5A9 /* Main.storyboard */,
+				F34465F31C8B647C00D67F2F /* Default-568h@2x.png */,
+			);
+			path = SleepDataFix;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F3C5D2C01C8A4B5D00562E85 /* SleepDataFix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3C5D2D31C8A4B5D00562E85 /* Build configuration list for PBXNativeTarget "SleepDataFix" */;
+			buildPhases = (
+				F3C5D2BD1C8A4B5D00562E85 /* Sources */,
+				F3C5D2BE1C8A4B5D00562E85 /* Frameworks */,
+				F3C5D2BF1C8A4B5D00562E85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SleepDataFix;
+			productName = SleepDataFix;
+			productReference = F3C5D2C11C8A4B5D00562E85 /* SleepDataFix.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F3C5D2B91C8A4B5D00562E85 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Sergey Parshukov";
+				TargetAttributes = {
+					F3C5D2C01C8A4B5D00562E85 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = WM25Q27BU6;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = F3C5D2BC1C8A4B5D00562E85 /* Build configuration list for PBXProject "SleepDataFix" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			mainGroup = F3C5D2B81C8A4B5D00562E85;
+			productRefGroup = F3C5D2C21C8A4B5D00562E85 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F3C5D2C01C8A4B5D00562E85 /* SleepDataFix */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F3C5D2BF1C8A4B5D00562E85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F35AE5251C8A4F26005BB5A9 /* Main.storyboard in Resources */,
+				F34465F41C8B647C00D67F2F /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F3C5D2BD1C8A4B5D00562E85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3C5D2C71C8A4B5D00562E85 /* MainViewController.swift in Sources */,
+				F3C5D2C51C8A4B5D00562E85 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F3C5D2D11C8A4B5D00562E85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F3C5D2D21C8A4B5D00562E85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3C5D2D41C8A4B5D00562E85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SleepDataFix/SleepDataFix.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SleepDataFix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.bugman.SleepDataFix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		F3C5D2D51C8A4B5D00562E85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SleepDataFix/SleepDataFix.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SleepDataFix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.bugman.SleepDataFix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F3C5D2BC1C8A4B5D00562E85 /* Build configuration list for PBXProject "SleepDataFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3C5D2D11C8A4B5D00562E85 /* Debug */,
+				F3C5D2D21C8A4B5D00562E85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3C5D2D31C8A4B5D00562E85 /* Build configuration list for PBXNativeTarget "SleepDataFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3C5D2D41C8A4B5D00562E85 /* Debug */,
+				F3C5D2D51C8A4B5D00562E85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F3C5D2B91C8A4B5D00562E85 /* Project object */;
+}
