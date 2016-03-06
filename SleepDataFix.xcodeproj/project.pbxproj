@@ -113,6 +113,9 @@
 			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = F3C5D2B81C8A4B5D00562E85;
 			productRefGroup = F3C5D2C21C8A4B5D00562E85 /* Products */;
 			projectDirPath = "";
