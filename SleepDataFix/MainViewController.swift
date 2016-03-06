@@ -21,8 +21,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var entries = [Entry]()
     var selectedEntry: Entry!
 
-    override func viewDidAppear(animated: Bool) {
-        // Doing it in viewDidAppear to be able to initialize HKHealthStore and then correctly perform segue
+    override func viewDidLoad() {
         if !HKHealthStore.isHealthDataAvailable() {
             self.handleHealthKitError()
             return
@@ -65,13 +64,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
 
                 self.resetTable()
-                results?.forEach({ (item) -> () in
+                for item in results! {
                     let sample = item as! HKCategorySample
-                    if sample.value == HKCategoryValueSleepAnalysis.InBed.rawValue {
+                    if sample.value != HKCategoryValueSleepAnalysis.InBed.rawValue {
+                        continue
+                    }
+                    // Filtering out entries with corresponding 'Asleep'
+                    if !results!.contains({
+                        $0 != item &&
+                        (($0 as! HKCategorySample).value == HKCategoryValueSleepAnalysis.Asleep.rawValue) &&
+                        $0.startDate == sample.startDate &&
+                        $0.endDate == sample.endDate
+                    }) {
                         let entry = Entry(sample: sample)
                         self.entries.append(entry)
                     }
-                })
+                }
                 self.updateTable()
             }
 
@@ -79,8 +87,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func handleHealthKitError() {
-        // Show error screen
-        performSegueWithIdentifier("errorSegue", sender: self)
+        // Show error screen for now
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.performSegueWithIdentifier("errorSegue", sender: self)
+        })
+    }
+
+    func showAlert(title: String, message: String) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -104,18 +122,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedEntry = self.entries[indexPath.row]
-        fixButton?.enabled = true
-        print(self.selectedEntry)
+        self.fixButton?.enabled = true
     }
 
     @IBOutlet var fixButton: UIBarButtonItem!
 
     @IBAction func fixPressed() {
-        print(self.selectedEntry)
         if self.selectedEntry == nil { // Just in case
             print("No selectedEntry")
             return
         }
+        self.fix(self.selectedEntry, shouldCallUpdate: true)
+    }
+
+    func fix(entry: Entry, shouldCallUpdate: Bool) {
         let sample = HKCategorySample(
             type: sleepType,
             value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
@@ -123,8 +143,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             endDate: self.selectedEntry.end)
         self.selectedEntry = nil
         self.healthKitStore.saveObject(sample) { (ok, error) -> Void in
-            print(ok, error)
-            self.updatePressed()
+            if error != nil {
+                self.showAlert("Can not save data", message: "Please enable write access in the Health app")
+            }
+            if shouldCallUpdate {
+                self.updatePressed()
+            }
         }
     }
 }
