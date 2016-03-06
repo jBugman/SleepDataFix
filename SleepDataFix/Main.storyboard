@@ -60,6 +60,16 @@
                                             <action selector="updatePressed" destination="WmF-QC-OFs" id="c9s-cR-1cW"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="Bvf-IG-WZ8" userLabel="_">
+                                        <connections>
+                                            <action selector="updatePressed" destination="WmF-QC-OFs" id="dIs-1t-kjr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Fix" id="Qo7-gE-Z2c" userLabel="Fix">
+                                        <connections>
+                                            <action selector="fixPressed" destination="WmF-QC-OFs" id="dfh-sm-g64"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -77,6 +87,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="fixButton" destination="Qo7-gE-Z2c" id="3aB-82-WA5"/>
                         <outlet property="table" destination="7Q0-Xx-wRC" id="BZI-38-LEM"/>
                         <segue destination="dsy-aP-aUc" kind="presentation" identifier="errorSegue" id="Yza-WS-3BJ"/>
                     </connections>

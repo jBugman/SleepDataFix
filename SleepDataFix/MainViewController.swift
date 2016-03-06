@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var table: UITableView!
 
@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
 
     var healthKitStore: HKHealthStore!
     var entries = [Entry]()
+    var selectedEntry: Entry!
 
     override func viewDidAppear(animated: Bool) {
         // Doing it in viewDidAppear to be able to initialize HKHealthStore and then correctly perform segue
@@ -34,6 +35,21 @@ class MainViewController: UIViewController, UITableViewDataSource {
                 self.handleHealthKitError()
             }
         }
+        self.resetTable()
+    }
+
+    func resetTable() {
+        self.selectedEntry = nil
+        self.entries.removeAll()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.fixButton?.enabled = false
+        })
+    }
+
+    func updateTable() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.table.reloadData()
+        })
     }
 
     @IBAction func updatePressed() {
@@ -48,7 +64,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
                     return
                 }
 
-                self.entries.removeAll()
+                self.resetTable()
                 results?.forEach({ (item) -> () in
                     let sample = item as! HKCategorySample
                     if sample.value == HKCategoryValueSleepAnalysis.InBed.rawValue {
@@ -56,10 +72,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
                         self.entries.append(entry)
                     }
                 })
-
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.table.reloadData()
-                })
+                self.updateTable()
             }
 
         self.healthKitStore?.executeQuery(query)
@@ -87,6 +100,32 @@ class MainViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = "\(startText) – \(endText)"
         cell.detailTextLabel?.text = self.dateFormatter.stringFromDate(entry.end)
         return cell
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedEntry = self.entries[indexPath.row]
+        fixButton?.enabled = true
+        print(self.selectedEntry)
+    }
+
+    @IBOutlet var fixButton: UIBarButtonItem!
+
+    @IBAction func fixPressed() {
+        print(self.selectedEntry)
+        if self.selectedEntry == nil { // Just in case
+            print("No selectedEntry")
+            return
+        }
+        let sample = HKCategorySample(
+            type: sleepType,
+            value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
+            startDate: self.selectedEntry.start,
+            endDate: self.selectedEntry.end)
+        self.selectedEntry = nil
+        self.healthKitStore.saveObject(sample) { (ok, error) -> Void in
+            print(ok, error)
+            self.updatePressed()
+        }
     }
 }
 
