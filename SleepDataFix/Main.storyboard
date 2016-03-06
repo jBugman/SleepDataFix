@@ -94,6 +94,16 @@
                                             <action selector="updatePressed" destination="WmF-QC-OFs" id="dIs-1t-kjr"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Fix All" id="SeG-H2-wfW" userLabel="Fix All">
+                                        <connections>
+                                            <action selector="fixAllPressed" destination="WmF-QC-OFs" id="wVv-cC-NHk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="MO2-Oe-hIf" userLabel="_">
+                                        <connections>
+                                            <action selector="updatePressed" destination="WmF-QC-OFs" id="yOS-On-ju3"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Fix" id="Qo7-gE-Z2c" userLabel="Fix">
                                         <connections>
                                             <action selector="fixPressed" destination="WmF-QC-OFs" id="dfh-sm-g64"/>
@@ -121,6 +131,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="fixAllButton" destination="SeG-H2-wfW" id="rac-qc-bcl"/>
                         <outlet property="fixButton" destination="Qo7-gE-Z2c" id="3aB-82-WA5"/>
                         <outlet property="okView" destination="qhn-Rm-ud8" id="yr9-2X-hKb"/>
                         <outlet property="table" destination="7Q0-Xx-wRC" id="BZI-38-LEM"/>

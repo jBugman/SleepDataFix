@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var table: UITableView!
     @IBOutlet var fixButton: UIBarButtonItem!
+    @IBOutlet var fixAllButton: UIBarButtonItem!
     @IBOutlet var okView: UIView!
 
     let sleepType = HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!
@@ -24,6 +25,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedEntry: Entry!
 
     override func viewDidLoad() {
+        self.resetTable()
         if !HKHealthStore.isHealthDataAvailable() {
             self.handleHealthKitError()
             return
@@ -75,25 +77,49 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     @IBAction func fixPressed() {
-        if self.selectedEntry == nil { // Just in case
-            print("No selectedEntry")
-            return
+        self.fixAllButton?.enabled = false
+        let sample = self.makeSample(self.selectedEntry)
+        self.healthKitStore.saveObject(sample, withCompletion: self.handleObjectsSaving)
+    }
+
+    @IBAction func fixAllPressed() {
+        self.fixAllButton?.enabled = false
+        let samples = self.entries.map { self.makeSample($0) }
+        self.healthKitStore.saveObjects(samples, withCompletion: self.handleObjectsSaving)
+    }
+
+    func handleObjectsSaving(ok: Bool, error: NSError?) {
+        if error != nil {
+            self.showAlert("Can not save data", message: "Please enable write access in the Health app")
         }
-        self.fix(self.selectedEntry, shouldCallUpdate: true)
+        self.updatePressed()
+    }
+
+    func makeSample(entry: Entry) -> HKCategorySample {
+        return HKCategorySample(
+            type: sleepType,
+            value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
+            startDate: entry.start,
+            endDate: entry.end)
     }
 
     func resetTable() {
         self.selectedEntry = nil
         self.entries.removeAll()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.fixButton?.enabled = false
+            self.fixButton.enabled = false
+            self.fixAllButton.enabled = false
         })
     }
 
     func updateTable() {
+        self.selectedEntry = nil
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.table.reloadData()
+            self.fixButton.enabled = false
+            self.fixAllButton.enabled = self.entries.count > 0
+
             self.okView.hidden = self.entries.count > 0
+            self.table.reloadData()
         })
     }
 
@@ -134,23 +160,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedEntry = self.entries[indexPath.row]
         self.fixButton?.enabled = true
-    }
-
-    func fix(entry: Entry, shouldCallUpdate: Bool) {
-        let sample = HKCategorySample(
-            type: sleepType,
-            value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
-            startDate: self.selectedEntry.start,
-            endDate: self.selectedEntry.end)
-        self.selectedEntry = nil
-        self.healthKitStore.saveObject(sample) { (ok, error) -> Void in
-            if error != nil {
-                self.showAlert("Can not save data", message: "Please enable write access in the Health app")
-            }
-            if shouldCallUpdate {
-                self.updatePressed()
-            }
-        }
     }
 }
 
