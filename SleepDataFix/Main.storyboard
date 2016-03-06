@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="top" id="Ihb-z1-r5r"/>
                         <viewControllerLayoutGuide type="bottom" id="IjQ-ly-nCY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eDa-HR-KBg">
+                    <view key="view" contentMode="scaleToFill" id="eDa-HR-KBg" userLabel="Root view">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -52,6 +52,35 @@
                                     <outlet property="delegate" destination="WmF-QC-OFs" id="JKp-ix-ck0"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhn-Rm-ud8" userLabel="No entries View">
+                                <rect key="frame" x="0.0" y="28" width="600" height="528"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QC7-Jb-8Dj" userLabel="Container">
+                                        <rect key="frame" x="122" y="119" width="355" height="290"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tick" translatesAutoresizingMaskIntoConstraints="NO" id="r1w-yV-Lpw">
+                                                <rect key="frame" x="77" y="26" width="200" height="200"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No lone 'In Bed' entries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZy-BN-ywU" userLabel="No lone 'In Bed' entries">
+                                                <rect key="frame" x="-123" y="233" width="600" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="290" id="D22-Kj-oas"/>
+                                            <constraint firstAttribute="width" constant="355" id="XVV-FW-maE"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="QC7-Jb-8Dj" firstAttribute="centerY" secondItem="qhn-Rm-ud8" secondAttribute="centerY" id="MDN-2l-N8x"/>
+                                    <constraint firstItem="QC7-Jb-8Dj" firstAttribute="centerX" secondItem="qhn-Rm-ud8" secondAttribute="centerX" id="vrz-4q-7Ri"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBq-N4-qa0">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -75,12 +104,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qhn-Rm-ud8" firstAttribute="top" secondItem="Ihb-z1-r5r" secondAttribute="bottom" constant="8" id="4BV-V0-mxB"/>
                             <constraint firstItem="iBq-N4-qa0" firstAttribute="leading" secondItem="eDa-HR-KBg" secondAttribute="leadingMargin" constant="-20" id="6O2-PJ-P8T"/>
+                            <constraint firstItem="iBq-N4-qa0" firstAttribute="top" secondItem="qhn-Rm-ud8" secondAttribute="bottom" id="F6J-LE-QXu"/>
                             <constraint firstItem="7Q0-Xx-wRC" firstAttribute="top" secondItem="Ihb-z1-r5r" secondAttribute="bottom" constant="8" symbolic="YES" id="FSp-gX-Qwn"/>
                             <constraint firstItem="iBq-N4-qa0" firstAttribute="top" secondItem="7Q0-Xx-wRC" secondAttribute="bottom" symbolic="YES" id="Owl-Mh-F8k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qhn-Rm-ud8" secondAttribute="trailing" constant="-20" id="YMk-qG-JPs"/>
                             <constraint firstItem="IjQ-ly-nCY" firstAttribute="top" secondItem="7Q0-Xx-wRC" secondAttribute="bottom" constant="44" id="kdh-yT-lcq"/>
+                            <constraint firstItem="qhn-Rm-ud8" firstAttribute="leading" secondItem="eDa-HR-KBg" secondAttribute="leadingMargin" constant="-20" id="lfH-s9-LTG"/>
                             <constraint firstItem="7Q0-Xx-wRC" firstAttribute="leading" secondItem="eDa-HR-KBg" secondAttribute="leadingMargin" constant="-20" id="qtF-pC-Yeb"/>
                             <constraint firstItem="7Q0-Xx-wRC" firstAttribute="trailing" secondItem="iBq-N4-qa0" secondAttribute="trailing" id="rLh-aN-hmP"/>
+                            <constraint firstItem="qhn-Rm-ud8" firstAttribute="top" secondItem="Ihb-z1-r5r" secondAttribute="bottom" constant="8" id="tOj-lz-oKd"/>
                             <constraint firstAttribute="trailing" secondItem="iBq-N4-qa0" secondAttribute="trailing" id="uog-TB-mkJ"/>
                             <constraint firstItem="iBq-N4-qa0" firstAttribute="top" secondItem="7Q0-Xx-wRC" secondAttribute="bottom" id="z09-RW-My2"/>
                         </constraints>
@@ -88,6 +122,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="fixButton" destination="Qo7-gE-Z2c" id="3aB-82-WA5"/>
+                        <outlet property="okView" destination="qhn-Rm-ud8" id="yr9-2X-hKb"/>
                         <outlet property="table" destination="7Q0-Xx-wRC" id="BZI-38-LEM"/>
                         <segue destination="dsy-aP-aUc" kind="presentation" identifier="errorSegue" id="Yza-WS-3BJ"/>
                     </connections>
@@ -104,7 +139,7 @@
                         <viewControllerLayoutGuide type="top" id="D9Y-0p-RnS"/>
                         <viewControllerLayoutGuide type="bottom" id="3D6-8Z-gJS"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Bj9-p0-2lf">
+                    <view key="view" contentMode="scaleToFill" id="Bj9-p0-2lf" userLabel="Root view">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -142,5 +177,6 @@
     </scenes>
     <resources>
         <image name="Cross" width="200" height="200"/>
+        <image name="Tick" width="200" height="200"/>
     </resources>
 </document>

@@ -12,6 +12,8 @@ import HealthKit
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var table: UITableView!
+    @IBOutlet var fixButton: UIBarButtonItem!
+    @IBOutlet var okView: UIView!
 
     let sleepType = HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!
     let dateFormatter = nsDateFormatter("dd.MM.yyyy")
@@ -34,21 +36,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.handleHealthKitError()
             }
         }
-        self.resetTable()
-    }
-
-    func resetTable() {
-        self.selectedEntry = nil
-        self.entries.removeAll()
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.fixButton?.enabled = false
-        })
-    }
-
-    func updateTable() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.table.reloadData()
-        })
+        self.updatePressed()
     }
 
     @IBAction func updatePressed() {
@@ -84,6 +72,29 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
 
         self.healthKitStore?.executeQuery(query)
+    }
+
+    @IBAction func fixPressed() {
+        if self.selectedEntry == nil { // Just in case
+            print("No selectedEntry")
+            return
+        }
+        self.fix(self.selectedEntry, shouldCallUpdate: true)
+    }
+
+    func resetTable() {
+        self.selectedEntry = nil
+        self.entries.removeAll()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.fixButton?.enabled = false
+        })
+    }
+
+    func updateTable() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.table.reloadData()
+            self.okView.hidden = self.entries.count > 0
+        })
     }
 
     func handleHealthKitError() {
@@ -123,16 +134,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedEntry = self.entries[indexPath.row]
         self.fixButton?.enabled = true
-    }
-
-    @IBOutlet var fixButton: UIBarButtonItem!
-
-    @IBAction func fixPressed() {
-        if self.selectedEntry == nil { // Just in case
-            print("No selectedEntry")
-            return
-        }
-        self.fix(self.selectedEntry, shouldCallUpdate: true)
     }
 
     func fix(entry: Entry, shouldCallUpdate: Bool) {
