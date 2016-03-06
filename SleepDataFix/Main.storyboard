@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Main-->
         <scene sceneID="QiU-7D-pzV">
             <objects>
-                <viewController id="WmF-QC-OFs" customClass="MainViewController" customModule="SleepDataFix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" id="WmF-QC-OFs" customClass="MainViewController" customModule="SleepDataFix" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ihb-z1-r5r"/>
                         <viewControllerLayoutGuide type="bottom" id="IjQ-ly-nCY"/>
@@ -78,11 +78,58 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="7Q0-Xx-wRC" id="BZI-38-LEM"/>
+                        <segue destination="dsy-aP-aUc" kind="presentation" identifier="errorSegue" id="Yza-WS-3BJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5H-io-n6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="30" y="337"/>
         </scene>
+        <!--Error screen-->
+        <scene sceneID="4aY-aR-ITK">
+            <objects>
+                <viewController title="Error screen" id="dsy-aP-aUc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D9Y-0p-RnS"/>
+                        <viewControllerLayoutGuide type="bottom" id="3D6-8Z-gJS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bj9-p0-2lf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RrN-4L-xbq" userLabel="Container">
+                                <rect key="frame" x="123" y="155" width="355" height="290"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Cross" translatesAutoresizingMaskIntoConstraints="NO" id="tE9-qj-jau">
+                                        <rect key="frame" x="77" y="26" width="200" height="200"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Health data is not available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6h-Kd-AuJ">
+                                        <rect key="frame" x="-123" y="233" width="600" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="1fK-Cb-9Lf"/>
+                                    <constraint firstAttribute="width" constant="355" id="BYV-qC-QQQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RrN-4L-xbq" firstAttribute="centerX" secondItem="Bj9-p0-2lf" secondAttribute="centerX" id="4da-Dm-rfU"/>
+                            <constraint firstItem="RrN-4L-xbq" firstAttribute="centerY" secondItem="Bj9-p0-2lf" secondAttribute="centerY" id="sXR-ln-vAQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sf1-U4-Hdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="525"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Cross" width="200" height="200"/>
+    </resources>
 </document>

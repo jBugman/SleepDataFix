@@ -20,16 +20,19 @@ class MainViewController: UIViewController, UITableViewDataSource {
     var healthKitStore: HKHealthStore!
     var entries = [Entry]()
 
-    override func viewDidLoad() {
+    override func viewDidAppear(animated: Bool) {
+        // Doing it in viewDidAppear to be able to initialize HKHealthStore and then correctly perform segue
         if !HKHealthStore.isHealthDataAvailable() {
-            // TODO: handle this
+            self.handleHealthKitError()
             return
         }
-        healthKitStore = HKHealthStore()
+        self.healthKitStore = HKHealthStore()
 
         let types = Set(arrayLiteral: sleepType)
-        healthKitStore.requestAuthorizationToShareTypes(types, readTypes: types) { (ok, error) -> Void in
-            print(ok)
+        self.healthKitStore.requestAuthorizationToShareTypes(types, readTypes: types) { (ok, error) -> Void in
+            if error != nil {
+                self.handleHealthKitError()
+            }
         }
     }
 
@@ -39,9 +42,9 @@ class MainViewController: UIViewController, UITableViewDataSource {
             sampleType: sleepType,
             predicate: nil,
             limit: Int(HKObjectQueryNoLimit),
-            sortDescriptors: [sortDescriptor]) { (query, results, error) -> Void in
+            sortDescriptors: [sortDescriptor]) { (_, results, error) -> Void in
                 if error != nil {
-                    // TODO: handle this
+                    self.handleHealthKitError()
                     return
                 }
 
@@ -53,13 +56,19 @@ class MainViewController: UIViewController, UITableViewDataSource {
                         self.entries.append(entry)
                     }
                 })
+
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.table.reloadData()
                 })
             }
-        healthKitStore?.executeQuery(query)
+
+        self.healthKitStore?.executeQuery(query)
     }
 
+    func handleHealthKitError() {
+        // Show error screen
+        performSegueWithIdentifier("errorSegue", sender: self)
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
